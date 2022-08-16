@@ -54,8 +54,8 @@ class expensas {
     }
     getTotal() {
         const total = this.expensas.getAll().reduce((acc, item) => {
-            return acc;
+            return acc += item.costo;
         }, 0);
-        return ` $${total.toFixed(2).toString()}`;
+        return `  $${total.toString()}`;
     }
 }

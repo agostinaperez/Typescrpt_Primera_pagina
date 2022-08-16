@@ -1,15 +1,15 @@
 //exp se refiere a cada objeto o servicio que agregaré a mis expensas, con su costo, id y descripción
 interface exp{
-    id?:number,
-    titulo:string,
-    costo:number
+    id?:number;
+    titulo:string;
+    costo:number;
 }
 
 interface IExpensas{
-    expensas:ArrayList<exp>
-    add(item:exp):boolean,
-    get(index:number):exp|null,
-    remove(id:number):boolean
+    expensas:ArrayList<exp>;
+    add(item:exp):boolean;
+    get(index:number):exp|null;
+    remove(id:number):boolean;
 }
 
 //clase genérica, por eso le pongo la T
@@ -82,10 +82,9 @@ class expensas implements IExpensas{
     
     getTotal():string{
         const total:number = this.expensas.getAll().reduce( (acc:number, item:exp) =>{
-            return acc += item.costo;
+            return acc +=item.costo;
         }, 0);
 
-        return `  $${total.toString}`;
+        return `  $${total.toString()}`;
     }
-
 }

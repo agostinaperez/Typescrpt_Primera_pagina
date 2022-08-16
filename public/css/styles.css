@@ -115,3 +115,8 @@ button{
     color: #ccc;
     font-weight: bolder;
 }
+
+#add{
+    size: 15px;
+    padding: 10px;
+}

@@ -1,28 +1,15 @@
 //Esta sección maneja la parte "gráfica" de mi programa
 
-//ACÁ PONGO QUERYSELECTOR O GETELEMENTBYID????
 const add=document.querySelector('#add') as HTMLButtonElement;
 const inputMonto=document.querySelector('#monto') as HTMLInputElement;
 const inputDescripcion=document.querySelector('#descripcion') as HTMLInputElement;
 
 const Expensas= new expensas();
-loadAPI();
-function loadAPI(){
-    fetch('api/api.json')
-    .then(res => res.json())
-    .then(json => {
-        const items:exp[] = json.items;
-        items.forEach(item => {
-            Expensas.add(item);
-        });
-
-        render();
-    });
-}
 
 //el ? es un opcional, "permite" que el elemento sea nulo; si pongo ! es que sé que el elemento NO VA A SER NULO
 add!.addEventListener('click', x=>{
 if(inputMonto!.value !='' && inputDescripcion!.value !='' && !isNaN(parseFloat(inputMonto!.value))){
+    
     const monto:number=parseFloat(inputMonto!.value);
     const descripcion=inputDescripcion!.value;
 
@@ -41,9 +28,10 @@ function render(){
     let html= "";
     Expensas.getItems().forEach(item=>{
         const{id, titulo, costo}=item;
+        console.log(item);
         html += `
             <div class="item">
-                <div>${costo.toString}</div>
+                <div>${costo}</div>
                 <div>${titulo}</div>
                 <div><button class="bEliminar" data-id="${id}">Eliminar</button></div>
             </div>

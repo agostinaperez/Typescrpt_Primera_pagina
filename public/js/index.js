@@ -1,22 +1,9 @@
 "use strict";
 //Esta sección maneja la parte "gráfica" de mi programa
-//ACÁ PONGO QUERYSELECTOR O GETELEMENTBYID????
 const add = document.querySelector('#add');
 const inputMonto = document.querySelector('#monto');
 const inputDescripcion = document.querySelector('#descripcion');
 const Expensas = new expensas();
-loadAPI();
-function loadAPI() {
-    fetch('api/api.json')
-        .then(res => res.json())
-        .then(json => {
-        const items = json.items;
-        items.forEach(item => {
-            Expensas.add(item);
-        });
-        render();
-    });
-}
 //el ? es un opcional, "permite" que el elemento sea nulo; si pongo ! es que sé que el elemento NO VA A SER NULO
 add.addEventListener('click', x => {
     if (inputMonto.value != '' && inputDescripcion.value != '' && !isNaN(parseFloat(inputMonto.value))) {
@@ -36,9 +23,10 @@ function render() {
     let html = "";
     Expensas.getItems().forEach(item => {
         const { id, titulo, costo } = item;
+        console.log(item);
         html += `
             <div class="item">
-                <div><span class="currency">${costo.valueOf}</span> ${costo.valueOf}</div>
+                <div>${costo}</div>
                 <div>${titulo}</div>
                 <div><button class="bEliminar" data-id="${id}">Eliminar</button></div>
             </div>
