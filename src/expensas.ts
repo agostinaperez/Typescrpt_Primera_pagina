@@ -11,7 +11,6 @@ interface IExpensas{
     get(index:number):exp|null;
     remove(id:number):boolean;
 }
-
 //clase genérica, por eso le pongo la T
 class ArrayList<T>{
 

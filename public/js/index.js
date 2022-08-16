@@ -31,6 +31,8 @@ function render() {
                 <div><button class="bEliminar" data-id="${id}">Eliminar</button></div>
             </div>
         `;
+        inputMonto.value = "";
+        inputDescripcion.value = "";
     });
     $('#items').innerHTML = html;
     $('#display').textContent = Expensas.getTotal();

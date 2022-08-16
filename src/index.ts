@@ -24,6 +24,7 @@ if(inputMonto!.value !='' && inputDescripcion!.value !='' && !isNaN(parseFloat(i
 }
 })
 
+
 function render(){
     let html= "";
     Expensas.getItems().forEach(item=>{
@@ -36,6 +37,8 @@ function render(){
                 <div><button class="bEliminar" data-id="${id}">Eliminar</button></div>
             </div>
         `;
+        inputMonto.value="";
+        inputDescripcion.value="";
         
     });
 
